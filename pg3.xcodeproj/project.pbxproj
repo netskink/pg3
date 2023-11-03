@@ -28,6 +28,7 @@
 		7290CDD22AF31EB200B4B50C /* map3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3.png; sourceTree = "<group>"; };
 		7290CDD32AF31EB200B4B50C /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		7290CDD42AF31EB200B4B50C /* sherman-turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherman-turret.png"; sourceTree = "<group>"; };
+		7295B2C82AF48F6F0009A164 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 		7290CDAD2AF31AC000B4B50C = {
 			isa = PBXGroup;
 			children = (
+				7295B2C82AF48F6F0009A164 /* README.md */,
 				7290CDCE2AF31C1100B4B50C /* imgs */,
 				7290CDB82AF31AC000B4B50C /* pg3 */,
 				7290CDB72AF31AC000B4B50C /* Products */,
