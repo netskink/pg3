@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7290CDBA2AF31AC000B4B50C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290CDB92AF31AC000B4B50C /* AppDelegate.swift */; };
-		7290CDBC2AF31AC000B4B50C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7290CDBB2AF31AC000B4B50C /* GameScene.sks */; };
-		7290CDBE2AF31AC000B4B50C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7290CDBD2AF31AC000B4B50C /* Actions.sks */; };
 		7290CDC02AF31AC000B4B50C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290CDBF2AF31AC000B4B50C /* GameScene.swift */; };
 		7290CDC22AF31AC000B4B50C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290CDC12AF31AC000B4B50C /* ViewController.swift */; };
 		7290CDC42AF31AC100B4B50C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7290CDC32AF31AC100B4B50C /* Assets.xcassets */; };
@@ -19,13 +17,17 @@
 /* Begin PBXFileReference section */
 		7290CDB62AF31AC000B4B50C /* pg3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pg3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7290CDB92AF31AC000B4B50C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7290CDBB2AF31AC000B4B50C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		7290CDBD2AF31AC000B4B50C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		7290CDBF2AF31AC000B4B50C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		7290CDC12AF31AC000B4B50C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7290CDC32AF31AC100B4B50C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7290CDC62AF31AC100B4B50C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7290CDC82AF31AC100B4B50C /* pg3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pg3.entitlements; sourceTree = "<group>"; };
+		7290CDCF2AF31DA000B4B50C /* tiger-turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiger-turret.png"; sourceTree = "<group>"; };
+		7290CDD02AF31EB200B4B50C /* sherman-hull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherman-hull.png"; sourceTree = "<group>"; };
+		7290CDD12AF31EB200B4B50C /* tigert-hull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tigert-hull.png"; sourceTree = "<group>"; };
+		7290CDD22AF31EB200B4B50C /* map3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3.png; sourceTree = "<group>"; };
+		7290CDD32AF31EB200B4B50C /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		7290CDD42AF31EB200B4B50C /* sherman-turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherman-turret.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		7290CDAD2AF31AC000B4B50C = {
 			isa = PBXGroup;
 			children = (
+				7290CDCE2AF31C1100B4B50C /* imgs */,
 				7290CDB82AF31AC000B4B50C /* pg3 */,
 				7290CDB72AF31AC000B4B50C /* Products */,
 			);
@@ -59,8 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				7290CDB92AF31AC000B4B50C /* AppDelegate.swift */,
-				7290CDBB2AF31AC000B4B50C /* GameScene.sks */,
-				7290CDBD2AF31AC000B4B50C /* Actions.sks */,
 				7290CDBF2AF31AC000B4B50C /* GameScene.swift */,
 				7290CDC12AF31AC000B4B50C /* ViewController.swift */,
 				7290CDC32AF31AC100B4B50C /* Assets.xcassets */,
@@ -68,6 +69,19 @@
 				7290CDC82AF31AC100B4B50C /* pg3.entitlements */,
 			);
 			path = pg3;
+			sourceTree = "<group>";
+		};
+		7290CDCE2AF31C1100B4B50C /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				7290CDD32AF31EB200B4B50C /* map.png */,
+				7290CDD22AF31EB200B4B50C /* map3.png */,
+				7290CDD02AF31EB200B4B50C /* sherman-hull.png */,
+				7290CDD42AF31EB200B4B50C /* sherman-turret.png */,
+				7290CDD12AF31EB200B4B50C /* tigert-hull.png */,
+				7290CDCF2AF31DA000B4B50C /* tiger-turret.png */,
+			);
+			path = imgs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7290CDBC2AF31AC000B4B50C /* GameScene.sks in Resources */,
 				7290CDC42AF31AC100B4B50C /* Assets.xcassets in Resources */,
-				7290CDBE2AF31AC000B4B50C /* Actions.sks in Resources */,
 				7290CDC72AF31AC100B4B50C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
