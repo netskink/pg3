@@ -32,7 +32,7 @@ class GameScene: SKScene {
         // size is for the view, we set it as 2048,2048
         // The image is 2000,2000
         // Also notice the black bars on side
-        print("size: \(size.width), \(size.height)")
+        //print("size: \(size.width), \(size.height)")
         
         // Add hull
         shermanHull.position = CGPoint(x: size.width/4, y: size.height/4)  // position in view
@@ -63,14 +63,14 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpateTime = currentTime
-        print("\(dt*1000) ms since last upate")
+        //print("\(dt*1000) ms since last upate")
         
-        moveSprite(sprite: shermanHull, velocity: CGPoint(x: shermanMovePointsPerSec, y: 0))
+        moveSprite(sprite: shermanHull, velocity: CGPoint(x: shermanMovePointsPerSec, y: shermanMovePointsPerSec/4))
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = CGPoint(x: velocity.x * CGFloat(dt), y: velocity.y * CGFloat(dt))
-        print("Amount to move: \(amountToMove)")
+        //print("Amount to move: \(amountToMove)")
         
         sprite.position = CGPoint(x: sprite.position.x + amountToMove.x,
                                   y: sprite.position.y + amountToMove.y)
