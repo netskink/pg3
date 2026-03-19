@@ -24,7 +24,7 @@
 		7290CDC82AF31AC100B4B50C /* pg3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pg3.entitlements; sourceTree = "<group>"; };
 		7290CDCF2AF31DA000B4B50C /* tiger-turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiger-turret.png"; sourceTree = "<group>"; };
 		7290CDD02AF31EB200B4B50C /* sherman-hull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherman-hull.png"; sourceTree = "<group>"; };
-		7290CDD12AF31EB200B4B50C /* tigert-hull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tigert-hull.png"; sourceTree = "<group>"; };
+		7290CDD12AF31EB200B4B50C /* tiger-hull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiger-hull.png"; sourceTree = "<group>"; };
 		7290CDD22AF31EB200B4B50C /* map3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3.png; sourceTree = "<group>"; };
 		7290CDD32AF31EB200B4B50C /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		7290CDD42AF31EB200B4B50C /* sherman-turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sherman-turret.png"; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 				7290CDD22AF31EB200B4B50C /* map3.png */,
 				7290CDD02AF31EB200B4B50C /* sherman-hull.png */,
 				7290CDD42AF31EB200B4B50C /* sherman-turret.png */,
-				7290CDD12AF31EB200B4B50C /* tigert-hull.png */,
+				7290CDD12AF31EB200B4B50C /* tiger-hull.png */,
 				7290CDCF2AF31DA000B4B50C /* tiger-turret.png */,
 			);
 			path = imgs;

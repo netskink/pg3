@@ -16,9 +16,10 @@ class GameScene: SKScene {
     
     var lastUpateTime: TimeInterval = 0
     var dt: TimeInterval = 0
-    
+
     let shermanMovePointsPerSec: CGFloat = 480.0
     var velocity = CGPoint.zero
+    var isSherman = true
 
     
     
@@ -66,8 +67,28 @@ class GameScene: SKScene {
         //print("\(dt*1000) ms since last upate")
         
         moveSprite(sprite: shermanHull, velocity: CGPoint(x: shermanMovePointsPerSec, y: shermanMovePointsPerSec/4))
+        checkBounds()
     }
-    
+
+    func checkBounds() {
+        let halfW = shermanHull.size.width / 2
+        let halfH = shermanHull.size.height / 2
+        if shermanHull.position.x - halfW > size.width ||
+           shermanHull.position.y - halfH > size.height {
+            // Reset to starting position
+            shermanHull.position = CGPoint(x: size.width/4, y: size.height/4)
+            // Swap tank
+            isSherman = !isSherman
+            if isSherman {
+                shermanHull.texture = SKTexture(imageNamed: "sherman-hull")
+                shermanTurret.texture = SKTexture(imageNamed: "sherman-turret")
+            } else {
+                shermanHull.texture = SKTexture(imageNamed: "tiger-hull")
+                shermanTurret.texture = SKTexture(imageNamed: "tiger-turret")
+            }
+        }
+    }
+
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = CGPoint(x: velocity.x * CGFloat(dt), y: velocity.y * CGFloat(dt))
         //print("Amount to move: \(amountToMove)")
