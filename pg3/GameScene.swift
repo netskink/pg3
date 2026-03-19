@@ -16,10 +16,15 @@ class GameScene: SKScene {
     var lastUpateTime: TimeInterval = 0
     var dt: TimeInterval = 0
 
-    let movePointsPerSec: CGFloat = 480.0
+    let movePointsPerSec: CGFloat = 384.0
     var tankVelocity = CGPoint.zero
     var isSherman = true
     var tankOnScreen = false
+    var turretTime: CGFloat = 0
+    let turretSwingDegrees: CGFloat = 15 * .pi / 180  // 15° in radians
+    let turretSwingSpeed: CGFloat = 0.5              // full cycles per second (sherman)
+    var currentTurretSwingSpeed: CGFloat = 0.5
+    var smokeEmitter: SKEmitterNode?
 
     enum CompassPoint: CaseIterable {
         case N, S, E, W, NE, NW, SE, SW
@@ -37,11 +42,18 @@ class GameScene: SKScene {
         tankHull.zPosition = 1
         addChild(tankHull)
 
-        tankTurret.position = CGPoint(x: 0, y: 0)
-        tankTurret.anchorPoint = CGPoint(x: 0.49, y: 0.5)
+        tankTurret.position = CGPoint(x: -41, y: 0)
+        tankTurret.anchorPoint = CGPoint(x: 0.39, y: 0.5)
         tankTurret.size = CGSize(width: 411, height: 144)
         tankTurret.zPosition = 2
         tankHull.addChild(tankTurret)
+
+        if let emitter = SKEmitterNode(fileNamed: "smoke") {
+            emitter.position = CGPoint(x: -200, y: 0)  // rear of hull in local space
+            emitter.targetNode = self                   // particles linger in the scene
+            tankHull.addChild(emitter)
+            smokeEmitter = emitter
+        }
 
         spawnNextTank()
     }
@@ -62,11 +74,26 @@ class GameScene: SKScene {
         }
     }
 
+    // Returns which screen edges a compass point sits on
+    func sides(of point: CompassPoint) -> Set<String> {
+        switch point {
+        case .N:  return ["top"]
+        case .S:  return ["bottom"]
+        case .E:  return ["right"]
+        case .W:  return ["left"]
+        case .NE: return ["top", "right"]
+        case .NW: return ["top", "left"]
+        case .SE: return ["bottom", "right"]
+        case .SW: return ["bottom", "left"]
+        }
+    }
+
     func spawnNextTank() {
         let all = CompassPoint.allCases
         let entry = all.randomElement()!
-        var exit = all.randomElement()!
-        while exit == entry { exit = all.randomElement()! }
+        // Only allow exits that share no edge with entry, guaranteeing the path crosses the screen
+        let validExits = all.filter { $0 != entry && sides(of: $0).isDisjoint(with: sides(of: entry)) }
+        let exit = validExits.randomElement()!
 
         let startPos = compassPosition(entry)
         let endPos   = compassPosition(exit)
@@ -75,14 +102,16 @@ class GameScene: SKScene {
         let dx = endPos.x - startPos.x
         let dy = endPos.y - startPos.y
         let length = sqrt(dx*dx + dy*dy)
-        tankVelocity = CGPoint(x: dx/length * movePointsPerSec,
-                               y: dy/length * movePointsPerSec)
 
         tankHull.position = startPos
         tankOnScreen = false
 
         // Alternate between sherman and tiger
         isSherman = !isSherman
+        let speed = isSherman ? movePointsPerSec : movePointsPerSec / 2
+        tankVelocity = CGPoint(x: dx/length * speed,
+                               y: dy/length * speed)
+        currentTurretSwingSpeed = isSherman ? turretSwingSpeed : turretSwingSpeed / 2
         if isSherman {
             tankHull.texture    = SKTexture(imageNamed: "sherman-hull")
             tankTurret.texture  = SKTexture(imageNamed: "sherman-turret")
@@ -114,7 +143,11 @@ class GameScene: SKScene {
         lastUpateTime = currentTime
 
         moveSprite(sprite: tankHull, velocity: tankVelocity)
+        smokeEmitter?.emissionAngle = tankHull.zRotation + .pi
         checkBounds()
+
+        turretTime += CGFloat(dt)
+        tankTurret.zRotation = sin(turretTime * currentTurretSwingSpeed * 2 * .pi) * turretSwingDegrees
     }
 
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
